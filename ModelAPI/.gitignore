@@ -289,3 +289,4 @@ __pycache__/
 *.xsd.cs
 
 app.json
+model.zip
