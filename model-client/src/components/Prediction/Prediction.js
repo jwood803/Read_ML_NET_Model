@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from  'react';
-import { Row, Col, Button } from 'reactstrap';
-import axios from "../utils/axios-model";
+import { Row, Col, Button, FormGroup } from 'reactstrap';
+import axios from "../../utils/axios-model";
 
 class Prediction extends Component {
   state = {
@@ -29,8 +29,8 @@ class Prediction extends Component {
 
     if(this.state.predictedSalary) {
       prediction = (<Row>
-        <Col xs="6">
-          <p>You should earn {formatter.format(this.state.predictedSalary)}</p>
+        <Col xs={{size: 6, offset: 4}}>
+          <p className="margin-left">You should earn {formatter.format(this.state.predictedSalary)}</p>
         </Col>
       </Row>);
     }
@@ -38,17 +38,17 @@ class Prediction extends Component {
     return (
       <Fragment>
         <Row>
-          <Col xs="6">
-            <p className="App-intro">
+          <Col xs={{size: 3, offset: 3}}>
+            <p className="top-margin">
               Enter the number of years:
             </p>
           </Col>
-          <Col xs="6">
-            <input type="text" onChange={this.yearsChanged}/>
+          <Col xs="1">
+            <input className="top-margin" type="text" onChange={this.yearsChanged}/>
           </Col>
         </Row>
-        <Row>
-          <Col xs="4">
+        <Row className="form-group">
+          <Col xs={{size: 2, offset: 5}}>
             <Button onClick={e => this.predict(this.state.predictedSalary)} color="primary">Predict</Button>
           </Col>
         </Row>

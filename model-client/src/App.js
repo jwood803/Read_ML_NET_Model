@@ -1,10 +1,23 @@
 import React, {Component, Fragment} from 'react';
-import { Container } from 'reactstrap';
-import Prediction from "./components/Prediction";
+import {Container, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import Prediction from "./components/Prediction/Prediction";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import classnames from 'classnames';
 
 class App extends Component {
+  state = {
+    activeTab: "1"
+  };
+
+  toggle(tabId) {
+    if (this.state.activeTab !== tabId) {
+      this.setState({
+        activeTab: tabId
+      });
+    }
+  }
+
   render() {
     return (
       <Fragment>
@@ -12,7 +25,32 @@ class App extends Component {
           <h1>Salary Prediction</h1>
         </header>
         <Container>
-          <Prediction/>
+          <Nav tabs>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === '1' })}
+                onClick={() => { this.toggle('1'); }}>
+                Predict
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === '2' })}
+                onClick={() => { this.toggle('2'); }}>
+                Visualize Data
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="1">
+              <Prediction/>
+            </TabPane>
+          </TabContent>
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="2">
+              <p style={{textAlign: "center"}}>D3 visualization</p>
+            </TabPane>
+          </TabContent>
         </Container>
       </Fragment>
     );

@@ -1,7 +1,15 @@
 .header {
     text-align: center;
-    background-color: black;
-    color: white;
-    height: 70px;
+    background-color: #21201F;
+    color: #727271;
+    height: 80px;
     padding: 20px;
+}
+
+.top-margin {
+    margin-top: 20px;
+}
+
+.margin-left {
+    margin-left: 5%;
 }
