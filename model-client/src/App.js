@@ -20,6 +20,12 @@ class App extends Component {
   }
 
   render() {
+    let formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    });
+
     return (
       <Fragment>
         <header className="header">
@@ -44,12 +50,12 @@ class App extends Component {
           </Nav>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
-              <Prediction/>
+              <Prediction formatter={formatter}/>
             </TabPane>
           </TabContent>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="2">
-              <Visualizations/>
+              <Visualizations formatter={formatter}/>
             </TabPane>
           </TabContent>
         </Container>

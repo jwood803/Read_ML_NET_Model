@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import _rangeRight from "lodash/rangeRight";
-import {VictoryChart, VictoryBar, VictoryAxis} from "victory";
+import {VictoryChart, VictoryBar, VictoryAxis, VictoryTooltip} from "victory";
 
 class BarChart extends Component {
   render() {
@@ -9,7 +9,10 @@ class BarChart extends Component {
     } = this.props;
 
     return (
-      <VictoryChart domainPadding={30} animate={{ duration: 2000 }}>
+      <VictoryChart
+        domainPadding={30}
+        animate={{ duration: 500 }}
+      >
         <VictoryAxis
           tickValues={_rangeRight(1, 12, 1)}
           label="Years of Experience"
@@ -33,8 +36,12 @@ class BarChart extends Component {
         />
         <VictoryBar
           data={data}
+          labelComponent={<VictoryTooltip/>}
           x="yearsExperience"
           y="salary"
+          style={{
+            data: { fill: "green" }
+          }}
         />
       </VictoryChart>
     );

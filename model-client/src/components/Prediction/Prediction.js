@@ -19,18 +19,12 @@ class Prediction extends Component {
   yearsChanged = e => this.setState({years: e.target.value});
 
   render() {
-    let formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-    });
-
     let prediction = "";
 
     if(this.state.predictedSalary) {
       prediction = (<Row>
         <Col xs={{size: 6, offset: 4}}>
-          <p className="margin-left">You should earn {formatter.format(this.state.predictedSalary)}</p>
+          <p className="margin-left">You should earn {this.props.formatter.format(this.state.predictedSalary)}</p>
         </Col>
       </Row>);
     }
