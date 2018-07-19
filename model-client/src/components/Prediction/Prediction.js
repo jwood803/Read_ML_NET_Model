@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from  'react';
-import { Row, Col, Button, FormGroup } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import axios from "../../utils/axios-model";
 
 class Prediction extends Component {
@@ -49,7 +49,7 @@ class Prediction extends Component {
         </Row>
         <Row className="form-group">
           <Col xs={{size: 2, offset: 5}}>
-            <Button onClick={e => this.predict(this.state.predictedSalary)} color="primary">Predict</Button>
+            <Button onClick={() => this.predict(this.state.predictedSalary)} color="primary">Predict</Button>
           </Col>
         </Row>
         {prediction}

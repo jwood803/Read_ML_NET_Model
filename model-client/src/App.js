@@ -4,6 +4,7 @@ import Prediction from "./components/Prediction/Prediction";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import classnames from 'classnames';
+import Visualizations from "./components/Visualizations/Visualizations";
 
 class App extends Component {
   state = {
@@ -48,7 +49,7 @@ class App extends Component {
           </TabContent>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="2">
-              <p style={{textAlign: "center"}}>D3 visualization</p>
+              <Visualizations/>
             </TabPane>
           </TabContent>
         </Container>
