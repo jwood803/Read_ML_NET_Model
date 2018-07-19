@@ -1,16 +1,20 @@
 import React, {Component, Fragment} from  'react';
 import { Row, Col, Button } from 'reactstrap';
 import axios from "../../utils/axios-model";
+import Spinner from "../UI/Spinner/Spinner";
 
 class Prediction extends Component {
   state = {
     predictedSalary: '',
-    years: ''
+    years: '',
+    isLoading: false,
   };
 
   predict = () => {
+    this.setState({isLoading: true});
+
     axios.get(`/${this.state.years}`)
-      .then(response => this.setState({predictedSalary: response.data}))
+      .then(response => this.setState({predictedSalary: response.data, isLoading: false}))
       .catch(response => {
         console.log(response);
       });
@@ -27,6 +31,9 @@ class Prediction extends Component {
           <p className="margin-left">You should earn {this.props.formatter.format(this.state.predictedSalary)}</p>
         </Col>
       </Row>);
+    }
+    else if (this.state.isLoading) {
+      prediction = <Spinner />
     }
 
     return (
