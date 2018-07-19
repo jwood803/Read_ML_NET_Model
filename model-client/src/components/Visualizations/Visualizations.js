@@ -3,6 +3,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import BarChart from "./BarChart";
 import axios from "../../utils/axios-data";
 import _map from "lodash/map";
+import ScatterChart from "./ScatterChart";
 
 class Visualizations extends Component {
   state = {
@@ -37,7 +38,9 @@ class Visualizations extends Component {
   };
 
   render() {
-    let chart = this.state.chartType === "bar" ? <BarChart data={this.state.data}/> : <p>Scatter</p>;
+    let chart = this.state.chartType === "bar" ?
+      <BarChart data={this.state.data}/> :
+      <ScatterChart data={this.state.data}/>;
 
     return (
       <Fragment>
